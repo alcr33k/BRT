@@ -1,0 +1,241 @@
+h1 {
+    font-family: "Source Code Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#header h1 {
+    font-size: 48px;
+    padding-top: 30px;
+	text-align: center;
+}
+#header {
+    border-bottom: 1px solid #e8e8e8;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: outside none none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote::before, blockquote::after, q::before, q::after {
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+audio, canvas, video {
+    display: inline-block;
+}
+audio:not([controls]) {
+    display: none;
+}
+[hidden] {
+    display: none;
+}
+
+
+#navbar {
+    margin-bottom: 44px;
+}
+.navbar {
+	text-align:center;
+}
+.navbar ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.navbar li {
+    border-top: 4px solid transparent;
+    color: #333;
+    display: inline-block;
+    position: relative;
+}
+.navbar a {
+    color: inherit;
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+}
+.navbar li:hover {
+    border-color: #666;
+    color: #666;
+}
+.navbar li.selected-parent, .navbar li.selected {
+    border-color: #22f;
+    color: #22f;
+}
+.navbar ul ul {
+    background-color: #fff;
+    left: -9999px;
+    padding: 8px;
+    position: absolute;
+    z-index: 2;
+}
+.navbar li li {
+    border-left: 4px solid transparent;
+    border-top: medium none;
+}
+.navbar li:hover ul {
+    left: 0;
+}
+.navbar li li:hover {
+    border-color: #666;
+    color: #666;
+}
+.navbar li li.selected {
+    border-color: #22f;
+    color: #22f;
+}
+.navbar li .italic {
+    font-style: italic;
+}
+#wrapper {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+    width: 70%;
+}
+body {
+    color: #222;
+    font: 100.01%/1.375 Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+p {
+    margin-bottom: 22px;
+}
+b, strong {
+    font-weight: bold;
+}
+i, em {
+    font-style: italic;
+}
+pre, code {
+    font: 1em/1.375 monospace;
+}
+h1 {
+    font-size: 2.375em;
+    line-height: 1.1579;
+    margin-bottom: 22px;
+}
+li ul, li ol {
+    margin: 0;
+}
+ul, ol {
+    margin: 0.6875em 1.5em 1.375em 0;
+    padding-left: 1.5em;
+}
+ul {
+    list-style-type: disc;
+}
+ol {
+    list-style-type: decimal;
+}
+table {
+    margin-bottom: 1.375em;
+    width: 100%;
+}
+caption {
+    font-style: italic;
+    text-align: left;
+}
+thead {
+    border-bottom: 2px solid #222;
+}
+th {
+    font-weight: bold;
+    text-align: left;
+    vertical-align: bottom;
+}
+th, td {
+    padding: 5px 10px 5px 5px;
+}
+tbody tr {
+    border-bottom: 1px solid #eee;
+}
+tbody tr:hover {
+    color: #000;
+}
+tfoot {
+    font-style: italic;
+}
+.black {
+    color: #000000;
+}
+.blue {
+    color: #049cdb;
+}
+.green {
+    color: #46a546;
+}
+.red {
+    color: #9d261d;
+}
+.yellow {
+    color: #ffc40d;
+}
+.orange {
+    color: #f89406;
+}
+body {
+    margin: 8px auto;
+    max-width: 940px;
+}
+#flash {
+    background-color: rgba(238, 238, 238, 0.95);
+    border: 1px solid #999999;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px #555555;
+    margin: 2em auto;
+    min-height: 10em;
+    padding: 1em;
+}
+#footer {
+    border-top: 1px solid #999999;
+    color: #999999;
+    font-size: smaller;
+    margin-top: 22px;
+    padding-top: 0.5em;
+}
+#footer a {
+    color: #999999;
+    text-decoration: none;
+}
+#footer a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+.example {
+    border: 1px solid #3e54e6;
+}
+.disclaimer {
+    font-size: smaller;
+    font-weight: bold;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+.smaller {
+    font-size: smaller;
+}
+code {
+    color: green;
+    padding: 10px;
+}
+.wrapper {
+    border: 1px solid grey;
+    padding: 20px;
+}
