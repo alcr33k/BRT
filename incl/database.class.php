@@ -26,4 +26,3 @@
 			return $this->dbh;
 		}
 	}
-// exec, execute, prepare, bindparam, fetcgCollumn, fetch_all, 
