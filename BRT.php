@@ -18,7 +18,7 @@
 	</div>
 
 	<div id='main'>
-		<div class="tc3"">
+		<div class="tc3" id="addTable">
 			<div id="aT1">
 				<p class="mainLink" id="newTable"><a href="#">Create new table</a></p>
 			</div>
@@ -49,7 +49,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="tc3">
+		<div class="tc3" id="editTable">
 			<div id="eT1">	
 				<p class="mainLink" id="eT1Btn"><a href="#">Edit existing table</a></p>
 			</div>

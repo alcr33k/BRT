@@ -1,35 +1,19 @@
 $(document).ready(function(){
   'use strict';
 	// JQuery
-	$("#newTable").click(function(){
-		$("#aT1").hide();
-		$("#aT2").show();
-	});
-	$("#eT1Btn").click(function(){
-		$("#eT1").hide();
-		// add table names to dropdown
-		$.ajax({
-			type: 'POST',
-			url: 'http://www.student.bth.se/~albh14/javascript/projekt/BRT/incl/form-action.php',
-			data: "action=getNames", // not safe need to secure table value
-			success: function(data)
-			{	
-				var tableNames = data.split(":");
-				for(var i = 0; i < tableNames.length; i++) {
-					$("#editSelect").append("<option value="+tableNames[i]+">"+tableNames[i]+"</option>");
-				}
-			},
-			error: function(XMLHttpRequest, textStatus, errorThrown) { 
-				alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-			}       
-		});
-		$("#eT2").show();
-	});
-	$('#main').on('click','#closeBtn', function(){
+	$('#main').on('click','#closeBtn', function(){ // close table
 		$(this).parent().hide();
 		$(".BRT").remove();
 		$("#aT1").show();
 		$("#eT1").show();
+		$("#editTable").show();
+		$("#addTable").show();
+	});
+	$("#newTable").click(function(){
+		$("#aT1").hide();
+		$("#aT2").show();
+		$("#editTable").hide();
+		$("#createTableForm").show();
 	});
 	$('#main').on('click','#createTableBtn', function(){
 		var tableName = $('#tblName').val();
@@ -75,6 +59,33 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$("#eT1Btn").click(function(){
+		$("#eT1").hide();
+		$("#addTable").hide();
+		// add table names to dropdown
+		$.ajax({
+			type: 'POST',
+			url: '../BRT/incl/form-action.php',
+			data: "action=getNames", // not safe need to secure table value
+			success: function(data)
+			{	
+				if(data == "none") {
+					$('#editSelect option[value="none"]').text("No tables available");
+					$('#editTableBtn').prop("disabled",true);
+				} else {
+					var tableNames = data.split(":");
+					for(var i = 0; i < tableNames.length; i++) {
+						$("#editSelect").append("<option value="+tableNames[i]+">"+tableNames[i]+"</option>");
+					}
+				}
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) { 
+				alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+			}       
+		});
+		$("#editTableForm").show();
+		$("#eT2").show();
+	});
 	$("#editTableBtn").click(function(){
 		$("#eT2").hide();
 		var tableName = $('#editSelect').val(); // get the selected table name
@@ -94,7 +105,7 @@ $(document).ready(function(){
 		$("#etHtml").val($("#eprT .BRT").html());
 		$.ajax({
 			type: 'POST',
-			url: 'http://www.student.bth.se/~albh14/javascript/projekt/BRT/incl/form-action.php',
+			url: '../BRT/incl/form-action.php',
 			data: $("#saveEditForm").serialize(), // serializes the form's elements.
 			success: function(data)
 			{
@@ -443,7 +454,7 @@ $(document).ready(function(){
 		$("#tHtml").val($(".BRT").html());
 		$.ajax({
 			type: 'POST',
-			url: 'http://www.student.bth.se/~albh14/javascript/projekt/BRT/incl/form-action.php',
+			url: '../BRT/incl/form-action.php',
 			data: $("#tableForm").serialize(), // serializes the form's elements.
 			success: function(data)
 			{
@@ -568,7 +579,7 @@ function callback(data) {
 function checkIfTableExists(tableName, callback) { // check if a table exists by it´s tablename
 	$.ajax({
 		type: 'POST',
-		url: 'http://www.student.bth.se/~albh14/javascript/projekt/BRT/incl/form-action.php',
+		url: '../BRT/incl/form-action.php',
 		data: "tblName=" + tableName + "&action=checkTable", // not safe need to secure table value
 		success: function(data)
 		{
@@ -583,7 +594,7 @@ function checkIfTableExists(tableName, callback) { // check if a table exists by
 function updateVotes(votes, tableName, tableRow, callback) { // check if a table exists by it´s tablename
 	$.ajax({
 		type: 'POST',
-		url: 'http://www.student.bth.se/~albh14/javascript/projekt/BRT/incl/form-action.php',
+		url: '../BRT/incl/form-action.php',
 		data: "vote=" + votes + "&tableName=" + tableName + "&tableRow=" + tableRow + "&action=updateVotes", // not safe need to secure table value
 		success: function(data)
 		{
@@ -598,7 +609,7 @@ function updateVotes(votes, tableName, tableRow, callback) { // check if a table
 function getTableCode(tableName, callback) { // get the table code, since ajax return as callback function
 	$.ajax({
 		type: 'POST',
-		url: 'http://www.student.bth.se/~albh14/javascript/projekt/BRT/incl/form-action.php',
+		url: '../BRT/incl/form-action.php',
 		data: "tblName=" + tableName + "&action=getCode", // not safe need to secure table value
 		success: function(data)
 		{
@@ -613,7 +624,7 @@ function getTableCode(tableName, callback) { // get the table code, since ajax r
 function addVotes(tableName, tableCode, callback) { // add correct votes to the vote columns in a table
 	$.ajax({
 		type: 'POST',
-		url: 'http://www.student.bth.se/~albh14/javascript/projekt/BRT/incl/form-action.php',
+		url: '../BRT/incl/form-action.php',
 		data: "tblName=" + tableName + "&action=getVotes", // not safe need to secure table value
 		success: function(data)
 		{
