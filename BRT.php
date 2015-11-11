@@ -33,20 +33,19 @@
 			</div>
 			<div id="aT3"><h1>Table: x</h1><div id="closeBtn"><p>X</p></div>
 				<div id="prT">
-					<div id="editBox"><div class="editBtn" id="boldBtn">B</div><div class="editBtn" id="italicBtn">I</div><div class="editBtn" id="underlineBtn">U</div><div class="editBtn" id="fontBtn">Font</div><div class="editBtn" id="fontsizeBtn">Font size</div><div class="editBtn" id="colorBtn"><img src="incl/img/color-wheel2.png" alt="color" height="16" width="16"></div><div class="editBtn disabled" id="rateBtn"><img src="incl/img/stars/star-disabled.png" alt="color" height="16" width="16"></div><div class="editBtn" id="columnsBtn">Edit table</div>
+					<div id="editBox"><div class="editBtn" id="boldBtn">B</div><div class="editBtn" id="italicBtn">I</div><div class="editBtn" id="underlineBtn">U</div><div class="editBtn" id="fontBtn">Font</div><div class="editBtn" id="fontsizeBtn">Font size</div><br><div class="editBtn" id="colorBtn"><img src="incl/img/color-wheel2.png" alt="color" height="16" width="16"></div><div class="editBtn disabled" id="rateBtn"><img src="incl/img/stars/star-disabled.png" alt="color" height="16" width="16"></div><div class="editBtn" id="columnsBtn">Edit table</div><div class="editBtn disabled" id="funcBtn"><img src="incl/img/lightning2.png" alt="color" height="16" width="16"></div><div id="filler" class="editBtn"></div>
 						<ul class="dropdown font-dropdown"><li class="arial">Arial</li><li class="timesnew">Times New Roman</li><li class="georgia">Georgia</li><li class="courier">Courier New</li><li class="trebucchet">Trebuchet MS</li><li class="verdana">Verdana</li><li class="helvetica">Helvetica Neue</li></ul>
 						<ul class="dropdown fontsize-dropdown"><li id="8">8px</li><li id="10">10px</li><li id="12">12px</li><li id="14">14px</li><li id="16">16px</li><li id="18">18px</li><li id="20">20px</li><li id="24">24px</li><li id="32">32px</li><li id="64">64px</li></ul>
-						<ul class="dropdown column-dropdown"><li id="addC">Add column</li><li id="deleteC">Delete column</li><li id="addR">Add row</li><li id="deleteR">Delete row</li><li id="deleteTh">Delete table header</li></ul>
+						<ul class="dropdown column-dropdown"><li id="addC">Add column</li><li id="deleteC">Delete column</li><li id="addR">Add row</li><li id="deleteR">Delete row</li><li id="addTh">Add table header</li><li id="deleteTh">Delete table header</li></ul>
 						<ul class="dropdown color-dropdown"><li id="addC"><canvas width="280" height="210" id="color_picker"></canvas><div class="hex"><p>HEX: <input type="text" value=""></input></p></div></li></ul>
 						<ul class="dropdown" id="rating-dropdown"><li id="addVotes"><img src="incl/img/upvotes/upvote-icon.png" alt="upvote" height="16" width="16">Vote up/down</li><li  id="addThumb"><img src="incl/img/thumbs/thumb.png" alt="thumb" height="16" width="16">Thumb up/down</li></ul>
+						<ul class="dropdown" id="func-dropdown"><li id="funcTime">Time</li><li id="funcDate">Date</li><li id="funcDay">Day</li><li id="funcMonth">Month</li><li id="funcYear">Year</li><li id="funcSort">Sort</li></ul>
+						<div id="funcBox"><p><a id="confirmF" href="#">Confirm</a><a id="declineF" href="#">Cancel</a></p></div>
 						<div id="confirmBox"><p>Are you sure?</p><p><a id="confirmL" href="#">Yes</a><a id="declineL" href="#">No</a></p></div>
 					</div>	
 				</div>	
-				<form id="tableForm"> <!-- action="incl/form-action.php" method="post" -->
-					<input id="tName" type="hidden" name="table-name" value="">
-					<input id="tHtml" type="hidden" name="html" value=""> 
-					<input id="saveTable" type="submit" name="saveTable" value="Save form">
-				</form>
+				<input id="saveTable" type="submit" name="saveTable" value="Save form">
+				<input id="tName" type="hidden" name="table-name" value="">
 			</div>
 		</div>
 		<div class="tc3" id="editTable">

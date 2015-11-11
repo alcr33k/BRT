@@ -4,14 +4,14 @@
 #colName{margin-left: 25px;width:200px;}
 #numColumns{margin-left: 30px;}
 #createTableBtn{width:90px;height:35px;}
-.editBtn{width:12.26%;float:left;border:1px solid #E8E8E8;cursor:pointer;}
+.editBtn{width:19.5%;float:left;border:1px solid #E8E8E8;cursor:pointer;}
 #boldBtn{font-weight: bold;}
 #italicBtn{font-style: italic;}
 #underlineBtn{text-decoration: underline;}
 #color-dropdown p{margin:0 auto;width:50%;}
 #color-dropdown input{width:60px;}
-.column-dropdown li:hover, .font-dropdown li:hover, .fontsize-dropdown li:hover, #rating-dropdown li:hover {background-color:#dbdbcc;}
-#colorBtn{padding:0px;height:20px;}
+li:hover {background-color:#dbdbcc;}
+#colorBtn{margin-top: 1px;position: absolute;width: 8.7%;}
 #colorBtn img {margin-top: 2px;}
 .active{background-color:#dbdbcc;}
 /* Fonts */
@@ -36,23 +36,34 @@
 #editBox2 div:first-child{margin-left:13%;}
 #eprT, #prT{width:80%;margin-left:auto;margin-right:auto;margin-top:50px;padding-bottom:20px;}
 .dropdown{background-color:#ffffff;border: 1px solid #e8e8e8;margin-top: 22px;padding:0;text-align:left;font-size:17px;z-index:1000;display: none;}
-#confirmBox{background-color:#ffffff;border: 1px solid #e8e8e8;margin-top: 22px;padding:0;font-size:17px;z-index:1000;position: absolute;left:67.2%;width:129px;display:none;}
+#confirmBox{background-color:#ffffff;border: 1px solid #e8e8e8;margin-top: 22px;padding:0;font-size:17px;z-index:1000;position: absolute;left:45.3%;width:165px;display:none;}
+#funcBox{background-color:#ffffff;border: 1px solid #e8e8e8;padding:20px;font-size:17px;z-index:1000;position: absolute;left:54.1%;width:125px;display:none;}
 #confirmBox a{padding:10px 20px;}
+#confirmF{margin-right:10px;}
+#declineF{:100px;}
+#funcBox a{color:blue}
+#num{width:60%}
 .dropdown li{list-style-type:none;border-bottom:1px solid black;line-height:130%;font-size:14px;padding: 5px 25px;white-space: nowrap;}
-.font-dropdown{position: absolute;left:44.4%;width:192px;}
-.fontsize-dropdown{position: absolute;left:50%;width:105px;height:140px;overflow: scroll;overflow-x: hidden;}
-.color-dropdown{position: absolute;left:55.4%;}
-.column-dropdown{position: absolute;left:66.6%;width:129px;}
+.font-dropdown{position: absolute;left:54%;width:192px;margin-top: 0;}
+.fontsize-dropdown{position: absolute;left:62.8%;width:165px;height:140px;margin-top: 0;overflow: scroll;overflow-x: hidden;}
+.color-dropdown{position: absolute;left:27.8%;}
+.column-dropdown{position: absolute;left:45.3%;width:165px;}
 .column-dropdown li{padding:5px 15px;;}
-#rating-dropdown{position: absolute;left:61.1%;width:129px;padding:5px 0;}
+#rating-dropdown{position: absolute;left:36.55%;width:165px;padding:5px 0;}
+#func-dropdown{position: absolute;left:54.1%;width:165px;padding:5px 0;}
 #rating-dropdown img {margin-left:-10px;}
 /* Table general CSS and classes */
 .BRT{empty-cells: show;border: 1px solid #e8e8e8;border-collapse: collapse;text-align: left;margin-left:auto;margin-right:auto;width:80%;}
 .BRT tr {}
-.BRT td, .BRT th{height:50px;border:1px solid #E8E8E8;cursor:pointer;}
+.BRT td .selected{cursor:text;}
+.BRT td, .BRT th{height:50px;border:1px solid #E8E8E8;}
 .preview td:hover, .preview th:hover{background:#F2FCFF;}
-
-
+#sort{position:absolute; left:11%;top:85px;font-size:smaller;font-weight:normal;width:100%;font-family:sans-serif;color:grey;}
+#sort-dropdown{display:none;position:absolute; left:5.32%; list-style:outside none none; font-size:12px;line-height:17px;padding: 5px 25px;width:100px;padding:5px 0;background:#f0f0f0;padding:0;margin-top:2px;font-style:normal;box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);border:1px solid grey;}
+#sort-dropdown a{font-weight:normal;font-size:10px;text-decoration:none;color:black;display:block;padding:8px 20px;font-weight:500;font-size:14px;font-family:Trebuchet MS,Lucida Sans Unicode,Arial,sans-serif;;border-bottom:1px solid #DEDCDC;}
+.shownVal{color:grey;font-weight:bold;}
+.BRTTable{padding:10px;}
+#c0{display:none;}
 
 
 

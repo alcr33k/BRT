@@ -15,11 +15,11 @@
 		}
 		
 		private function insertVotesCode($conn, $tName, $html) { // insert every columns index with votes to votesTable, (string)$tName is the table name of the table with votes, (string)$html is the html of the table
-			$columns = explode("<tr>", $html);
+			$columns = explode("<tr", $html);
 			$numColumns = count($columns) - 1;
 			for ($i = 2; $i <= $numColumns; $i++) { 
-				$stmt2 = $conn->prepare("INSERT INTO brVotes (tableName,columnNumber,numVotes,upVotes) VALUES (?, ?, 0, 0)");
-				$stmt2->bindParam(1,$tableName,PDO::PARAM_STR);
+				$stmt2 = $conn->prepare("INSERT INTO brVotes (tableName,columnNumber,numVotes,upVotes) VALUES (?, ?, 1, 1)");
+				$stmt2->bindParam(1,$tName,PDO::PARAM_STR);
 				$stmt2->bindParam(2,$i, PDO::PARAM_INT);
 				$stmt2->execute();
 			}
@@ -92,7 +92,7 @@
 		}
 		
 		public function createTable($conn, $tName, $html) {
-			if(strpos($html, 'class="ratingC"') !== false) { // votes was found in html, add the votes to votesTable
+			if((strpos($html, 'class="ratingC"')) !== false) { // votes was found in html, add the votes to votesTable
 				// create SQL table, add values in application best is if filled in 
 				try {
 					$this->createBase($conn);
@@ -120,7 +120,7 @@
 			try {
 				$stmt = $conn->prepare("UPDATE brTables SET tableCode=? WHERE tableName=?");
 				$stmt->bindParam(1,$html, PDO::PARAM_STR);
-				$stmt->bindParam(2,$tableName,PDO::PARAM_STR);
+				$stmt->bindParam(2,$tName,PDO::PARAM_STR);
 				$stmt->execute();
 				echo "<p class='status'>The table was updated</p>";
 			}
@@ -130,28 +130,58 @@
 		}
 		
 		public function updateVotes($conn, $vote, $tName, $tRow) {
-			if($vote = "0") { // downvote, add no upvote but add vote to total number of votes
+			// escape input
+			
+			
+			if($vote == "0") { // downvote, add no upvote but add vote to total number of votes
 				try {	
 					$stmt = $conn->prepare("UPDATE brVotes SET numVotes=numVotes+1 WHERE tableName=? AND columnNumber=?");
-					$stmt->bindParam(1,$tableName, PDO::PARAM_STR);
-					$stmt->bindParam(2,$tableRow,PDO::PARAM_STR);
+					$stmt->bindParam(1,$tName, PDO::PARAM_STR);
+					$stmt->bindParam(2,$tRow,PDO::PARAM_STR);
 					$stmt->execute();
 				}
 				catch(PDOExceptation $e) {
 					echo "Error:" . $e->getMessage();
 				}
-			} else if($vote = "1") { // uovote, add both to upvotes and total number of votes
+			} else if($vote == "1") { // uovote, add both to upvotes and total number of votes
 				try {	
 					$stmt = $conn->prepare("UPDATE brVotes SET upVotes=upVotes+1 WHERE tableName=? AND columnNumber=?");
-					$stmt->bindParam(1,$tableName, PDO::PARAM_STR);
-					$stmt->bindParam(2,$tableRow,PDO::PARAM_STR);
+					$stmt->bindParam(1,$tName, PDO::PARAM_STR);
+					$stmt->bindParam(2,$tRow,PDO::PARAM_STR);
 					$stmt->execute();
 					$stmt2 = $conn->prepare("UPDATE brVotes SET numVotes=numVotes+1 WHERE tableName=? AND columnNumber=?");
-					$stmt2->bindParam(1,$tableName, PDO::PARAM_STR);
-					$stmt2->bindParam(2,$tableRow,PDO::PARAM_STR);
+					$stmt2->bindParam(1,$tName, PDO::PARAM_STR);
+					$stmt2->bindParam(2,$tRow,PDO::PARAM_STR);
 					$stmt2->execute();
 				}
 				catch(PDOExceptation $e) {
+					echo "Error:" . $e->getMessage();
+				}
+			}
+		}
+		
+		public function wilsonScore($tName, $conn) {
+			try {	
+				$stmt = $conn->prepare("
+					SELECT columnNumber, ((upVotes + 1.9208) / (upVotes + (numVotes - upVotes)) - 
+					1.96 * SQRT((upVotes * (numVotes - upVotes)) / (upVotes + (numVotes - upVotes)) + 0.9604) / 
+                          (upVotes + (numVotes - upVotes))) / (1 + 3.8416 / (upVotes + (numVotes - upVotes))) 
+					AS ci_lower_bound FROM brVotes WHERE upVotes + (numVotes - upVotes) > 0 AND tableName=?
+				ORDER BY ci_lower_bound DESC;");		
+				$stmt->bindParam(1,$tName);
+				$stmt->execute();
+				$result = $stmt->fetchAll();
+				if($result != false) {
+					return json_encode($result);
+				} else {
+					return "false";
+				}
+			}
+			catch(PDOException $e) {
+				if (strpos($e, 'table or view not found') !== false) {
+					$this->createBase($conn);
+					checkTableCode($tName, $conn);
+				} else {
 					echo "Error:" . $e->getMessage();
 				}
 			}
